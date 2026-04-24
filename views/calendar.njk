@@ -216,10 +216,10 @@
                     const toggleBtn = document.getElementById('toggle-timezone-btn');
                     if (currentTimezone === visitorTimezone) {
                       noticeText.textContent = `Times shown in your local timezone (${visitorTimezone}).`;
-                      toggleBtn.textContent = `Show venue time (${ownerTimezone})`;
+                      toggleBtn.textContent = `Show the times in the timezone of the calendar (${ownerTimezone})`;
                     } else {
-                      noticeText.textContent = `Times shown in venue timezone (${ownerTimezone}).`;
-                      toggleBtn.textContent = `Show my time (${visitorTimezone})`;
+                      noticeText.textContent = `Times shown in the timezone of the calendar (${ownerTimezone}).`;
+                      toggleBtn.textContent = `Show the times in your local timezone (${visitorTimezone})`;
                     }
                   }
 
