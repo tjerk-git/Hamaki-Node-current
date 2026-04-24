@@ -60,6 +60,10 @@
                   </div>
                 </div>
               {% endif %}
+              <div id="timezone-notice" class="notification is-info is-light mb-3" style="display: none;">
+                <p id="timezone-notice-text"></p>
+                <button class="button is-small is-info mt-2" id="toggle-timezone-btn"></button>
+              </div>
               <div id="spots-container">
                 {% for group in groupedSpots %}
                   <div class="day-group">
@@ -192,22 +196,49 @@
                 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
                 <script>
-                  document.querySelectorAll('.spot-date').forEach(el => {
-                    const dateStr = el.getAttribute('data-date');
-                    const formatted = moment(dateStr).format('dddd [the] Do [of] MMMM');
-                    el.textContent = formatted;
-                  });
-                  document.querySelectorAll('.spot-time').forEach(el => {
-                    const startStr = el.getAttribute('data-time');
-                    const endStr = el.getAttribute('data-end-time');
-                    const startFormatted = moment(startStr).format('h:mm A');
-                    const endFormatted = moment(endStr).format('h:mm A');
-                    el.textContent = `${startFormatted} - ${endFormatted}`;
-                  });
+                  const ownerTimezone = "{{ calendar.owner.timezone }}";
+                  const visitorTimezone = moment.tz.guess();
+                  let currentTimezone = visitorTimezone;
+
+                  function renderTimes(timezone) {
+                    document.querySelectorAll('.spot-date').forEach(el => {
+                      el.textContent = moment.tz(el.getAttribute('data-date'), timezone).format('dddd [the] Do [of] MMMM');
+                    });
+                    document.querySelectorAll('.spot-time').forEach(el => {
+                      const start = moment.tz(el.getAttribute('data-time'), timezone).format('h:mm A');
+                      const end = moment.tz(el.getAttribute('data-end-time'), timezone).format('h:mm A');
+                      el.textContent = `${start} - ${end}`;
+                    });
+                  }
+
+                  function updateTimezoneNotice() {
+                    const noticeText = document.getElementById('timezone-notice-text');
+                    const toggleBtn = document.getElementById('toggle-timezone-btn');
+                    if (currentTimezone === visitorTimezone) {
+                      noticeText.textContent = `Times shown in your local timezone (${visitorTimezone}).`;
+                      toggleBtn.textContent = `Show venue time (${ownerTimezone})`;
+                    } else {
+                      noticeText.textContent = `Times shown in venue timezone (${ownerTimezone}).`;
+                      toggleBtn.textContent = `Show my time (${visitorTimezone})`;
+                    }
+                  }
+
+                  renderTimes(visitorTimezone);
+
+                  if (ownerTimezone && ownerTimezone !== visitorTimezone) {
+                    document.getElementById('timezone-notice').style.display = 'block';
+                    updateTimezoneNotice();
+                    document.getElementById('toggle-timezone-btn').addEventListener('click', () => {
+                      currentTimezone = currentTimezone === visitorTimezone ? ownerTimezone : visitorTimezone;
+                      renderTimes(currentTimezone);
+                      updateTimezoneNotice();
+                    });
+                  }
+
                   // Set timezone in hidden field
                   const waitlistTimezoneField = document.getElementById('waitlist-timezone');
                   if (waitlistTimezoneField) {
-                    waitlistTimezoneField.value = moment.tz.guess();
+                    waitlistTimezoneField.value = visitorTimezone;
                   }
                   // Waiting list modal functionality
                   const waitlistModal = document.getElementById('waitlist-modal');
