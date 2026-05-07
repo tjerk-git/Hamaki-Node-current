@@ -13,7 +13,7 @@
           <div class="card">
             <div class="card-content">
             <h1 id="reservation-title" class="title is-3">Reserve Your Spot</h1>
-            <div class="mb-4">
+            <div class="mb-4" id="spot-time-container">
               <p>
                 <strong>Time:</strong>
                 <span id="spot-time">{{ startDate }} -- {{ endDate }}</span>
@@ -121,16 +121,34 @@
                 document.getElementById('visitorEmail').value = savedEmail;
               
               // Set client timezone
-              const clientTimezone = moment.tz.guess();
-              document.getElementById('timezone-field').value = clientTimezone;
+              const visitorTimezone = moment.tz.guess();
+              document.getElementById('timezone-field').value = visitorTimezone;
               // Format spot time
+              const ownerTimezone = '{{ ownerTimezone }}';
               const spotTimeEl = document.getElementById('spot-time');
+              const spotTimeContainer = document.getElementById('spot-time-container');
               const startTime = '{{ startDate }}';
               const endTime = '{{ endDate }}';
+
+              function formatSpotRange(tz) {
+                const start = moment.tz(startTime, tz);
+                const end = moment.tz(endTime, tz);
+                const startStr = start.format('MMMM D, YYYY [at] h:mm A');
+                const endStr = start.isSame(end, 'day')
+                  ? end.format('h:mm A')
+                  : end.format('MMMM D, YYYY [at] h:mm A');
+                return `${startStr} - ${endStr}`;
+              }
+
               if (startTime && startTime !== 'undefined' && endTime && endTime !== 'undefined') {
-                const startFormatted = moment(startTime).format('MMMM D, YYYY [at] h:mm A');
-                const endFormatted = moment(endTime).format('h:mm A');
-                spotTimeEl.textContent = `${startFormatted} - ${endFormatted}`;
+                if (ownerTimezone && ownerTimezone !== visitorTimezone) {
+                  spotTimeContainer.innerHTML =
+                    '<p class="mb-1"><strong>Time</strong></p>' +
+                    '<p class="mb-1">' + formatSpotRange(visitorTimezone) + ' <span class="has-text-grey is-size-7">(your time, ' + visitorTimezone + ')</span></p>' +
+                    '<p>' + formatSpotRange(ownerTimezone) + ' <span class="has-text-grey is-size-7">(calendar time, ' + ownerTimezone + ')</span></p>';
+                } else {
+                  spotTimeEl.textContent = formatSpotRange(visitorTimezone);
+                }
               }
               // Confetti function
               function fireConfetti() {
