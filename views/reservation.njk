@@ -52,10 +52,10 @@
                       </div>
                       <div class="field">
                         <div class="control">
-                          <button type="submit" class="button is-primary is-fullwidth">
+                          <button type="submit" id="submit-btn" class="button is-primary is-fullwidth">
                             <span class="icon">
                               <img src="/images/hamaki-logo.svg" alt="Hamaki" style="width: 20px; height: 20px;"></span>
-                              <span>Reserve Spot</span>
+                              <span id="submit-btn-text">Reserve Spot</span>
                             </button>
                           </div>
                         </div>
@@ -225,6 +225,19 @@
                 
                 if (emailInput.value) 
                   setCookie('visitorEmail', emailInput.value, 365);
+
+                // Set loading state
+                const submitBtn = document.getElementById('submit-btn');
+                const submitBtnText = document.getElementById('submit-btn-text');
+                submitBtn.disabled = true;
+                submitBtn.classList.add('is-loading');
+                submitBtnText.textContent = 'Reserving…';
+
+                function resetButton() {
+                  submitBtn.disabled = false;
+                  submitBtn.classList.remove('is-loading');
+                  submitBtnText.textContent = 'Reserve Spot';
+                }
                 
                 // Submit form
                 const formData = new FormData(form);
@@ -283,11 +296,13 @@
                     }, 500);
                   } else {
                     const errorData = await response.json().catch(() => ({}));
+                    resetButton();
                     showError(
                     errorData.message || 'Failed to create reservation. Please try again.');
                   }
                 } catch (error) {
                   console.error('Error:', error);
+                  resetButton();
                   showError('An error occurred. Please try again.');
                 }
               });

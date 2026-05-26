@@ -86,13 +86,22 @@ router.post('/reserve', async (req, res) => {
       ...(timezone && { timezone })
     };
 
-    const response = await fetch(`${apiEndpoint}/${apiVersion}/reservations`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestBody)
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    let response;
+    try {
+      response = await fetch(`${apiEndpoint}/${apiVersion}/reservations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody),
+        signal: controller.signal
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
 
     const contentType = response.headers.get('content-type');
 
@@ -115,6 +124,9 @@ router.post('/reserve', async (req, res) => {
     }
   } catch (error) {
     console.error('Error in /api/reserve:', error);
+    if (error.name === 'AbortError') {
+      return res.status(503).json({ message: 'The server is taking too long to respond. Please try again in a moment.' });
+    }
     res.status(500).json({ message: 'Internal server error' });
   }
 });
