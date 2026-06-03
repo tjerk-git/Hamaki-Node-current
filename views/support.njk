@@ -1,0 +1,56 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="content">
+      <h1 class="title">Support</h1>
+      <p class="subtitle">Need help with Hamaki? Here's where to look.</p>
+
+      <div class="box">
+        <h2 class="title is-4">
+          <span class="icon-text">
+            <span class="icon"><i class="fas fa-book"></i></span>
+            <span>Documentation</span>
+          </span>
+        </h2>
+        <p>Getting started, feature guides, and FAQ.</p>
+        <a href="https://hamaki-docs.raymond.frl" target="_blank" class="button is-primary">
+          <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+          <span>Open docs</span>
+        </a>
+      </div>
+
+      <div class="box">
+        <h2 class="title is-4">
+          <span class="icon-text">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <span>Contact</span>
+          </span>
+        </h2>
+        <p>Reach out directly if you can't find an answer in the docs.</p>
+        <div class="buttons">
+          <a href="https://mastodon.design/@potloodgum" target="_blank" class="button is-light">
+            <span class="icon"><i class="fab fa-mastodon"></i></span>
+            <span>Mastodon</span>
+          </a>
+          <a href="https://raymond.frl" target="_blank" class="button is-light">
+            <span class="icon"><i class="fas fa-globe"></i></span>
+            <span>raymond.frl</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2 class="title is-4">
+          <span class="icon-text">
+            <span class="icon"><i class="fab fa-app-store"></i></span>
+            <span>Found a bug?</span>
+          </span>
+        </h2>
+        <p>Leave a note in the App Store review or reach out directly — both work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

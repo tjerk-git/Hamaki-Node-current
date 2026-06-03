@@ -9,6 +9,7 @@ import calendarRoutes from './routes/calendar.js';
 import reservationRoutes from './routes/reservation.js';
 import localRoutes from './routes/local.js';
 import artworksRoutes from './routes/artworks.js';
+import supportRoutes from './routes/support.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use(express.static('public'));
 // The calendar route has /:url which catches everything
 app.use('/', homeRoutes);
 app.use('/about', aboutRoutes);
+app.use('/support', supportRoutes);
 app.use('/local', localRoutes);
 app.use('/', reservationRoutes);
 app.use('/', artworksRoutes);
