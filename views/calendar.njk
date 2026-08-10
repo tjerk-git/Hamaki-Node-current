@@ -1,7 +1,31 @@
 {% extends "base.njk" %}
-{% block header_title %}
-  <strong class="header-title">{{ calendar.name }}</strong>
+
+{% block body_class %}calendar-page{% endblock %}
+
+{% block nav %}
+<header class="navbar">
+  <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: white;">
+      <img src="/images/hamaki-logo.svg" alt="Hamaki" width="40" height="45" style="display: block;">
+      <strong class="header-title">{{ calendar.name }}</strong>
+    </a>
+  </div>
+</header>
 {% endblock %}
+
+{% block footer %}
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      made with love by <a href="https://mastodon.design/@potloodgum" target="_blank">Potloodgum</a> and <a href="https://raymond.frl" target="_blank">Dongelen</a>
+      &nbsp;&middot;&nbsp;
+      <a href="/support">Support</a>
+    </p>
+  </div>
+</footer>
+{% endblock %}
+
+{% block header_title %}{% endblock %}
 
 {% block content %}
   <section class="section">
