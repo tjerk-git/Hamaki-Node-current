@@ -1,12 +1,167 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<section class="section">
-  <div class="container is-max-desktop">
-    <h1 class="title">About Hamaki</h1>
-    <div class="content">
-      <p>Hamaki is a scheduling application built with Express and Nunjucks.</p>
+
+<div class="page-header">
+  <h1>About Hamaki</h1>
+  <p>Two lecturers, one scheduling problem, and a Japanese hammock.</p>
+</div>
+
+{# ===== MISSION ===== #}
+<section>
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">Our mission</div>
+      <h2 class="section-title">Scheduling should feel like a hammock</h2>
+    </div>
+
+    <p style="font-size:1.1rem;line-height:1.85;color:var(--text-body);text-align:center;max-width:620px;margin:0 auto 1.5rem;">
+      ハンモック — <em>hanmokku</em> — is the Japanese word for hammock.
+      That's the feeling Hamaki is built around: once your booking page is set up,
+      you lean back while everything arranges itself.
+    </p>
+    <p style="font-size:1.05rem;line-height:1.85;color:var(--text-muted);text-align:center;max-width:580px;margin:0 auto;">
+      No more reply-all email threads. No sharing your calendar with a cloud service.
+      Just a link, a page, and people who book themselves in.
+    </p>
+  </div>
+</section>
+
+{# ===== TEAM ===== #}
+<section class="section-alt">
+  <div class="section-wrapper">
+    <div class="section-header center">
+      <div class="section-label">The makers</div>
+      <h2 class="section-title">Meet Raymond &amp; Tjerk</h2>
+      <p class="section-sub">
+        Both lecturers at NHL Stenden University of Applied Sciences,
+        both tired of scheduling meetings by email.
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">R</div>
+        <div class="team-name">Raymond van Dongelen</div>
+        <div class="team-role">Developer &amp; Lecturer</div>
+        <p class="team-bio">
+          Raymond teaches at the Communication &amp; Multimedia Design bachelor's programme (CMDLWD)
+          at NHL Stenden. He also makes macOS apps because the ones he needed didn't exist yet.
+          Hamaki is the best proof of that.
+          He writes about design and technology at raymond.frl.
+        </p>
+        <div class="team-links">
+          <a href="https://raymond.frl" target="_blank" class="team-link">
+            <i class="fas fa-globe"></i> raymond.frl
+          </a>
+          <a href="https://apps.apple.com/nl/developer/raymond-van-dongelen/id926761221?l=en-GB&platform=mac"
+             target="_blank" class="team-link">
+            <i class="fab fa-apple"></i> App Store
+          </a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">T</div>
+        <div class="team-name">Tjerk Dijkstra</div>
+        <div class="team-role">Designer &amp; Lecturer · Potloodgum</div>
+        <p class="team-bio">
+          Tjerk (known online as Potloodgum) teaches alongside Raymond at NHL Stenden's
+          CMDLWD programme. He brings the design sensibility to Hamaki — the sharp eye
+          that makes the interface feel considered and calm, not cluttered.
+          You'll find him on Mastodon at mastodon.design.
+        </p>
+        <div class="team-links">
+          <a href="https://mastodon.design/@potloodgum" target="_blank" class="team-link">
+            <i class="fab fa-mastodon"></i> Mastodon
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+{# ===== ORIGIN STORY ===== #}
+<section>
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">The origin</div>
+      <h2 class="section-title">Why we built it</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;">
+        <div class="feature-icon" style="margin-bottom:0.75rem;"><i class="fas fa-calendar-alt"></i></div>
+        <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.5rem;">The problem</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.7;margin:0;">
+          At NHL Stenden's CMDLWD bachelor's programme, students need regular one-on-one meetings
+          with their lecturers — feedback sessions, project reviews, portfolio critiques.
+          Organising these by email meant an endless ping-pong of "are you free Thursday at 2?"
+          "No, what about 3?" "I have a meeting, how about Friday?"
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;">
+        <div class="feature-icon" style="margin-bottom:0.75rem;"><i class="fas fa-lightbulb"></i></div>
+        <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.5rem;">The idea</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.7;margin:0;">
+          Online scheduling tools exist, but they all require sharing your calendar with a cloud
+          service, signing up for yet another account, or both. Raymond and Tjerk wanted something
+          that worked with their existing Mac and Calendar.app — private, local, and actually fun to use.
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.75rem 1.5rem;">
+        <div class="feature-icon" style="margin-bottom:0.75rem;"><i class="fas fa-hammer"></i></div>
+        <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.5rem;">The result</h3>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.7;margin:0;">
+          Hamaki launched in 2024 and has been shipped continuously since. From basic booking pages
+          to waiting lists, AI integration, Spotlight search, and a CLI — it keeps growing because
+          Raymond and Tjerk use it themselves every day. When something is annoying, they fix it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== VALUES ===== #}
+<section class="section-alt">
+  <div class="section-wrapper">
+    <div class="section-header center">
+      <div class="section-label">What we believe</div>
+      <h2 class="section-title">Our principles</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-home"></i></div>
+        <h3>Your data, your Mac</h3>
+        <p>Hamaki processes everything locally. Your schedule doesn't get synced to our servers, because we don't have any.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-apple-alt"></i></div>
+        <h3>A real Mac app</h3>
+        <p>Not a web app wrapped in Electron. Hamaki uses native macOS APIs, respects system settings, and lives in the menu bar where it belongs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tools"></i></div>
+        <h3>Built by users</h3>
+        <p>Every feature in Hamaki exists because Raymond or Tjerk needed it. No roadmaps driven by investor decks. Just real problems, solved well.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== CTA ===== #}
+<section class="cta-banner">
+  <h2>Try it yourself</h2>
+  <p>Free to start. One booking calendar, unlimited spots, no account needed.</p>
+  <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+     class="btn btn-primary" target="_blank" style="font-size:1.05rem;padding:0.85rem 1.75rem;">
+    <i class="fab fa-apple"></i> Download on Mac App Store
+  </a>
+</section>
+
 {% endblock %}

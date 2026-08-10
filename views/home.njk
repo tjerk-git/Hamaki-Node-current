@@ -1,36 +1,296 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<section class="section">
-  <div class="container is-max-desktop">
-    <h1 class="title" style="color: white;">Welcome to Hamaki</h1>
-    <p class="subtitle" style="color: white;">Your scheduling assistant</p>
 
-    <div class="content">
-      <p style="color: white;">Hamaki is a Mac productivity app that makes scheduling appointments effortless. Simply draw 'spots' on your calendar, and let people sign up for those available times.</p>
+{# ===== HERO ===== #}
+<section class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <i class="fab fa-apple"></i>&nbsp; macOS only &nbsp;·&nbsp; Free with in-app purchases
+    </div>
 
-      <div class="box">
-        <h2 class="title is-4">Key Features</h2>
-        <ul>
-          <li><strong>Calendar Integration</strong> - Works seamlessly with your default calendar app</li>
-          <li><strong>Easy Scheduling</strong> - Draw available time slots on your calendar</li>
-          <li><strong>Automatic Sync</strong> - Appointments automatically appear in your regular calendar</li>
-          <li><strong>Privacy First</strong> - No need to share your calendar with online services</li>
-          <li><strong>Local Processing</strong> - All key actions take place directly on your machine</li>
-        </ul>
+    <h1 class="hero-headline">Relax.<br>Your calendar<br>is now bookable.</h1>
+
+    <p class="hero-sub">
+      Share a booking page, let people pick a slot, done.
+      No back-and-forth emails. No cloud services.
+      Hamaki lives in your menu bar and keeps your data on your Mac.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+         class="btn btn-primary" target="_blank">
+        <i class="fab fa-apple"></i>
+        Download on Mac App Store
+      </a>
+      <a href="/features" class="btn btn-secondary">
+        See all features →
+      </a>
+    </div>
+
+    <p class="hero-note">macOS 15.0 or later &nbsp;·&nbsp; 7.6 MB &nbsp;·&nbsp; Free to start</p>
+  </div>
+</section>
+
+{# ===== FEATURE HIGHLIGHTS ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="section-header center">
+      <div class="section-label">What Hamaki does</div>
+      <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+      <p class="section-sub">
+        Hamaki is a real Mac app — not a browser tab. It works with Calendar.app,
+        supports Shortcuts and MCP, and never sends your data to the cloud.
+      </p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Draw Your Availability</h3>
+        <p>Mark open "spots" on your calendar. Visitors pick one. That's it. No overlapping, no double-bookings.</p>
       </div>
 
-      <div class="box">
-        <h2 class="title is-4">Get Started</h2>
-        <p>Download Hamaki from the Mac App Store and start managing your appointments with ease.</p>
-        <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12" class="button is-primary" target="_blank">
-          <span class="icon">
-            <i class="fab fa-apple"></i>
-          </span>
-          <span>Download on Mac App Store</span>
-        </a>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-link"></i></div>
+        <h3>Public Booking Page</h3>
+        <p>Share your personal booking link. Students, clients or colleagues book directly — no login required on their end.</p>
       </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <h3>Privacy First</h3>
+        <p>Your calendar data never leaves your Mac. No OAuth tokens, no calendar cloud sync with third parties.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI Assistant Ready</h3>
+        <p>Connect Claude, OpenCode, or any MCP-compatible assistant to Hamaki. Ask who you have tomorrow or when your next free slot is.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-terminal"></i></div>
+        <h3>Command Line Tool</h3>
+        <p><code>hamakicli</code> lets you query appointments from the terminal. Great for scripting and automation.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bell"></i></div>
+        <h3>Today Widget</h3>
+        <p>Add the Hamaki widget to Notification Centre and see your day at a glance — who's up next, which slots are free.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-sticky-note"></i></div>
+        <h3>Visitor Notes</h3>
+        <p>Link Obsidian, Bear, NotePlan, or Apple Notes to each calendar. Open a visitor's note with one tap.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-search"></i></div>
+        <h3>Spotlight Integration</h3>
+        <p>Search a visitor name in Spotlight and jump straight to their profile in Hamaki — without opening the app first.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-list-alt"></i></div>
+        <h3>Waiting Lists</h3>
+        <p>When your calendar is full, visitors can join a waiting list. You manage them directly from the app.</p>
+      </div>
+
     </div>
   </div>
 </section>
+
+{# ===== HOW IT WORKS ===== #}
+<section class="section-alt">
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Three steps to a bookable calendar</h2>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div style="display:grid; grid-template-columns:48px 1fr; gap:1.25rem; align-items:start;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Thunder',sans-serif;font-size:1.4rem;font-weight:600;flex-shrink:0;">1</div>
+        <div>
+          <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.3rem;">Install Hamaki from the Mac App Store</h3>
+          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7;margin:0;">It lives in your menu bar. Connect your existing Calendar.app or create standalone booking calendars — no calendar permissions required.</p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:48px 1fr; gap:1.25rem; align-items:start;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Thunder',sans-serif;font-size:1.4rem;font-weight:600;flex-shrink:0;">2</div>
+        <div>
+          <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.3rem;">Draw available spots on your calendar</h3>
+          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7;margin:0;">Drag to create time slots visually. Set breaks between appointments, restrict access, or add waiting lists — all from the app.</p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:48px 1fr; gap:1.25rem; align-items:start;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Thunder',sans-serif;font-size:1.4rem;font-weight:600;flex-shrink:0;">3</div>
+        <div>
+          <h3 style="font-size:1.05rem;color:var(--text-dark);margin-bottom:0.3rem;">Share your booking link and relax</h3>
+          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.7;margin:0;">Visitors open your booking page, pick a slot, fill in their name. Done. Appointments land in your calendar automatically. No emails needed.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ===== TESTIMONIAL / ORIGIN ===== #}
+<section>
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">The story</div>
+      <h2 class="section-title">Built by lecturers,<br>for anyone who hates scheduling</h2>
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:2.5rem 2rem;margin-bottom:2rem;">
+      <p style="font-size:1.1rem;line-height:1.8;color:var(--text-body);margin-bottom:1.25rem;">
+        Raymond van Dongelen and Tjerk Dijkstra (Potloodgum) are both lecturers at
+        <strong>NHL Stenden University of Applied Sciences</strong>, teaching at the
+        Communication &amp; Multimedia Design bachelor's programme (CMDLWD).
+      </p>
+      <p style="font-size:1.05rem;line-height:1.8;color:var(--text-muted);margin-bottom:1.25rem;">
+        Their programme is built around consulting students — lots of one-on-one meetings, feedback sessions, and check-ins. The email back-and-forth to schedule all of those was a daily time sink.
+        <em>There had to be a better way.</em>
+      </p>
+      <p style="font-size:1.05rem;line-height:1.8;color:var(--text-muted);margin:0;">
+        So they built Hamaki. The name comes from <strong>ハンモック</strong> (hanmokku) — the Japanese word for hammock.
+        The idea: once your booking page is live, you can sit back and relax while students find their own slot.
+      </p>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="/about" class="btn btn-outline">Meet the team →</a>
+    </div>
+  </div>
+</section>
+
+{# ===== REVIEW ===== #}
+<section class="section-alt">
+  <div class="section-wrapper narrow">
+    <div style="background:linear-gradient(135deg,var(--purple-mid),var(--purple-light));border-radius:18px;padding:2.5rem 2rem;text-align:center;color:#fff;">
+      <div style="font-size:1rem;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:1rem;">★★★★★</div>
+      <blockquote style="font-size:1.2rem;font-style:italic;line-height:1.7;margin:0 0 1.5rem;color:rgba(255,255,255,0.95);">
+        "It's fantastic. Everything just works. Saves me sooo much time scheduling appointments with students. Very well thoughtout app."
+      </blockquote>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);">— Jopw, Mac App Store review</p>
+    </div>
+  </div>
+</section>
+
+{# ===== LATEST UPDATES ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Changelog</div>
+      <h2 class="section-title">Always improving</h2>
+      <p class="section-sub">Hamaki ships regularly. Here's what's new.</p>
+    </div>
+
+    <div class="version-timeline">
+
+      <div class="version-block">
+        <div class="version-tag">2026.7</div>
+        <div class="version-items">
+          <div class="version-item">
+            <h4>Ask your AI assistant about your schedule</h4>
+            <p>Connect Claude Desktop, OpenCode, or any MCP-compatible assistant to Hamaki. Ask who you have tomorrow, when your next free slot is, or how many appointments you had this month.</p>
+          </div>
+          <div class="version-item">
+            <h4>Command line tool</h4>
+            <p><code>hamakicli</code> lets you query your appointments from the terminal — great for scripting and automation. Try <code>hamakicli today</code> or <code>hamakicli visitor "Jan"</code>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="version-block">
+        <div class="version-tag">2026.5</div>
+        <div class="version-items">
+          <div class="version-item">
+            <h4>Today Widget</h4>
+            <p>Add the Hamaki widget to Notification Centre and see your day at a glance — appointments booked, who's up next, and which slots are still free.</p>
+          </div>
+          <div class="version-item">
+            <h4>Reliable Sync</h4>
+            <p>Hamaki now automatically recovers from sync drift after waking your Mac, relaunching the app, or restoring from a backup.</p>
+          </div>
+          <div class="version-item">
+            <h4>Open Visitor Notes via Claude</h4>
+            <p>Ask Claude to open a visitor's note before their session and it opens straight away in Obsidian, Bear, NotePlan, or Apple Notes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="version-block">
+        <div class="version-tag">2026.4</div>
+        <div class="version-items">
+          <div class="version-item">
+            <h4>Note Taking</h4>
+            <p>Link Obsidian, Bear, NotePlan, or a Shortcut to each calendar. Open a visitor's note with one tap — or let Hamaki create it if it doesn't exist yet.</p>
+          </div>
+          <div class="version-item">
+            <h4>Spot Detail Redesign</h4>
+            <p>Spot details now lead with the visitor's name, show their booking pulse at a glance, and put all actions in one logical place.</p>
+          </div>
+          <div class="version-item">
+            <h4>Visitor Jump</h4>
+            <p>Right-click any visitor name in the overview or waiting list to jump straight to their profile or copy their email.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="version-block">
+        <div class="version-tag">2026.3</div>
+        <div class="version-items">
+          <div class="version-item">
+            <h4>Visitor Search</h4>
+            <p>Find any visitor by name from the new Search tab, and see their full appointment history and pulse.</p>
+          </div>
+          <div class="version-item">
+            <h4>Spotlight Integration</h4>
+            <p>Search a visitor name in Spotlight and jump straight to their profile in Hamaki.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="version-block">
+        <div class="version-tag">2026.2</div>
+        <div class="version-items">
+          <div class="version-item">
+            <h4>Standalone Calendars</h4>
+            <p>Create booking calendars directly in Hamaki — no Calendar.app access needed.</p>
+          </div>
+          <div class="version-item">
+            <h4>Move Appointment</h4>
+            <p>Reschedule any spot to a new date and time directly from the spot detail view.</p>
+          </div>
+          <div class="version-item">
+            <h4>MCP Server</h4>
+            <p>Let Claude and other AI assistants query your Hamaki schedule locally.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{# ===== DOWNLOAD CTA ===== #}
+<section class="cta-banner">
+  <h2>Ready to reclaim your time?</h2>
+  <p>Free to start. No account required. Your data stays on your Mac.</p>
+  <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+     class="btn btn-primary" target="_blank" style="font-size:1.1rem;padding:0.9rem 2rem;">
+    <i class="fab fa-apple"></i>
+    Download Hamaki — Free
+  </a>
+</section>
+
 {% endblock %}

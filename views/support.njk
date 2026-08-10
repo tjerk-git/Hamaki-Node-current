@@ -1,56 +1,159 @@
 {% extends "base.njk" %}
 
 {% block content %}
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="content">
-      <h1 class="title" style="color: white;">Support</h1>
-      <p class="subtitle" style="color: white;">Need help with Hamaki? Here's where to look.</p>
 
-      <div class="box">
-        <h2 class="title is-4">
-          <span class="icon-text">
-            <span class="icon"><i class="fas fa-book"></i></span>
-            <span>Documentation</span>
-          </span>
-        </h2>
-        <p>Getting started, feature guides, and FAQ.</p>
-        <a href="https://hamaki-docs.raymond.frl" target="_blank" class="button is-primary">
-          <span class="icon"><i class="fas fa-external-link-alt"></i></span>
-          <span>Open docs</span>
+<div class="page-header">
+  <h1>Support</h1>
+  <p>We're two people. We answer quickly and actually fix things.</p>
+</div>
+
+{# ===== QUICK LINKS ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="support-grid">
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fas fa-book"></i></div>
+        <h3>Documentation</h3>
+        <p>Getting started guides, feature walkthroughs, and answers to the most common questions.</p>
+        <a href="https://hamaki-docs.raymond.frl" target="_blank" class="btn btn-purple" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          Open Docs <i class="fas fa-external-link-alt" style="font-size:0.75rem;"></i>
         </a>
       </div>
 
-      <div class="box">
-        <h2 class="title is-4">
-          <span class="icon-text">
-            <span class="icon"><i class="fas fa-envelope"></i></span>
-            <span>Contact</span>
-          </span>
-        </h2>
-        <p>Reach out directly if you can't find an answer in the docs.</p>
-        <div class="buttons">
-          <a href="https://mastodon.design/@potloodgum" target="_blank" class="button is-light">
-            <span class="icon"><i class="fab fa-mastodon"></i></span>
-            <span>Mastodon</span>
-          </a>
-          <a href="https://raymond.frl" target="_blank" class="button is-light">
-            <span class="icon"><i class="fas fa-globe"></i></span>
-            <span>raymond.frl</span>
-          </a>
-        </div>
+      <div class="support-card">
+        <div class="support-icon"><i class="fab fa-mastodon"></i></div>
+        <h3>Mastodon</h3>
+        <p>Reach Tjerk (Potloodgum) on Mastodon. Best place for feature requests and general chat.</p>
+        <a href="https://mastodon.design/@potloodgum" target="_blank" class="btn btn-outline" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          @potloodgum
+        </a>
       </div>
 
-      <div class="box">
-        <h2 class="title is-4">
-          <span class="icon-text">
-            <span class="icon"><i class="fab fa-app-store"></i></span>
-            <span>Found a bug?</span>
-          </span>
-        </h2>
-        <p>Leave a note in the App Store review or reach out directly — both work.</p>
+      <div class="support-card">
+        <div class="support-icon"><i class="fas fa-globe"></i></div>
+        <h3>Raymond's site</h3>
+        <p>Technical questions and bug reports land well via raymond.frl — Raymond checks it regularly.</p>
+        <a href="https://raymond.frl" target="_blank" class="btn btn-outline" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          raymond.frl
+        </a>
       </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fab fa-apple"></i></div>
+        <h3>App Store review</h3>
+        <p>Found a bug or have feedback? An App Store review gets seen — and Raymond does read every one.</p>
+        <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12" target="_blank" class="btn btn-outline" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          Leave a review
+        </a>
+      </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Privacy Policy</h3>
+        <p>We're serious about privacy. Hamaki keeps your data local. Read the full policy to see exactly what's collected.</p>
+        <a href="https://hamaki-docs.raymond.frl/Privacy-policy.html" target="_blank" class="btn btn-outline" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          Read policy
+        </a>
+      </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fas fa-file-contract"></i></div>
+        <h3>Terms of Use</h3>
+        <p>The legal fine print — what Hamaki is, what it isn't, and how the subscription works.</p>
+        <a href="https://hamaki-docs.raymond.frl.pro/Terms-of-use.html" target="_blank" class="btn btn-outline" style="font-size:0.88rem;padding:0.5rem 1rem;">
+          Read terms
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
+
+{# ===== FAQ ===== #}
+<section class="section-alt">
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-question">Is Hamaki really free?</summary>
+        <div class="faq-answer">
+          Yes — the free tier gives you one booking calendar with unlimited spots and a public booking page.
+          Hamaki Pro unlocks multiple booking calendars, custom booking page URLs, auto-scheduled breaks between appointments, and deeper Shortcuts and MCP integration.
+          Pro is €29.99 one-time or €2.99/month via the Mac App Store.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Does Hamaki work without Calendar.app?</summary>
+        <div class="faq-answer">
+          Yes. Since version 2026.2, Hamaki can create standalone booking calendars that don't require any calendar permissions at all. Great if you don't want to connect your existing calendars.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Where is my data stored?</summary>
+        <div class="faq-answer">
+          Everything stays on your Mac. Hamaki does not sync your schedule to any cloud service. Visitor bookings come in via the booking page (which is hosted), but all your calendar data and appointment details live locally.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">What macOS version do I need?</summary>
+        <div class="faq-answer">
+          Hamaki requires macOS 15.0 (Sequoia) or later. It's a Mac-only app — there is no iPhone or iPad version.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How does the MCP integration work?</summary>
+        <div class="faq-answer">
+          Hamaki runs a local MCP (Model Context Protocol) server. You connect Claude Desktop, OpenCode, or another MCP-compatible AI assistant to it, and you can then ask natural-language questions about your schedule: "Who do I have tomorrow?", "When's my next free slot this week?", "How many appointments did I have in June?" — all answered from your local data, never sent to a remote server.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Can visitors cancel or reschedule their booking?</summary>
+        <div class="faq-answer">
+          Visitors receive a confirmation page after booking with a link to their reservation. From there they can cancel. Rescheduling can be done by the calendar owner directly from within the Hamaki app (since version 2026.2).
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How do I set up the CLI?</summary>
+        <div class="faq-answer">
+          The <code>hamakicli</code> command line tool ships with Hamaki 2026.7. After installing or updating the app, open Terminal and try <code>hamakicli today</code> or <code>hamakicli visitor "name"</code>. Full docs are available at hamaki-docs.raymond.frl.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">I found a bug. How do I report it?</summary>
+        <div class="faq-answer">
+          Reach out to Raymond directly via raymond.frl, or message Tjerk on Mastodon (@potloodgum on mastodon.design). An App Store review also works — Raymond reads them all and treats bug reports seriously.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+{# ===== CTA ===== #}
+<section class="cta-banner">
+  <h2>Still need help?</h2>
+  <p>We're real people and we respond. Don't hesitate to reach out.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://mastodon.design/@potloodgum" target="_blank" class="btn btn-primary">
+      <i class="fab fa-mastodon"></i> Message on Mastodon
+    </a>
+    <a href="https://raymond.frl" target="_blank" class="btn btn-secondary">
+      <i class="fas fa-globe"></i> raymond.frl
+    </a>
+  </div>
+</section>
+
 {% endblock %}

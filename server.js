@@ -10,6 +10,7 @@ import reservationRoutes from './routes/reservation.js';
 import localRoutes from './routes/local.js';
 import artworksRoutes from './routes/artworks.js';
 import supportRoutes from './routes/support.js';
+import marketingRoutes from './routes/marketing.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use(express.static('public'));
 // IMPORTANT: Specific routes must come before wildcard routes
 // The calendar route has /:url which catches everything
 app.use('/', homeRoutes);
+app.use('/', marketingRoutes);
 app.use('/about', aboutRoutes);
 app.use('/support', supportRoutes);
 app.use('/local', localRoutes);

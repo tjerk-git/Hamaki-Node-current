@@ -4,39 +4,108 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} - Hamaki</title>
+  <meta name="description" content="{{ description or 'Hamaki — Scheduling made easy. A Mac app that lets people book your time without the back-and-forth.' }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <header class="navbar">
-    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-      <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: white;">
-        <img src="/images/hamaki-logo.svg" alt="Hamaki" width="40" height="45" style="display: block;">
-        {% block header_title %}
-          <strong class="header-title">Hamaki</strong>
-        {% endblock %}
+
+  {% block nav %}
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/images/hamaki-logo.svg" alt="Hamaki" width="32" height="36">
+        Hamaki
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/features" {% if title == 'Features' %}class="active"{% endif %}>Features</a></li>
+        <li><a href="/about" {% if title == 'About' %}class="active"{% endif %}>About</a></li>
+        <li><a href="/support" {% if title == 'Support' %}class="active"{% endif %}>Support</a></li>
+        <li>
+          <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+             target="_blank"
+             class="nav-cta">
+            <i class="fab fa-apple"></i> Download
+          </a>
+        </li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile">
+      <a href="/features">Features</a>
+      <a href="/about">About</a>
+      <a href="/support">Support</a>
+      <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12" target="_blank">
+        <i class="fab fa-apple"></i> Download on Mac App Store
       </a>
     </div>
-  </header>
+  </nav>
+  {% endblock %}
 
   <main>
     {% block content %}{% endblock %}
   </main>
 
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        made with &lt;3 by <a href="https://mastodon.design/@potloodgum" target="_blank">Potloodgum</a> and <a href="https://raymond.frl" target="_blank">Dongelen</a>
-        &nbsp;&middot;&nbsp;
+  {% block footer %}
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">
+          <img src="/images/hamaki-logo.svg" alt="Hamaki" width="28" height="32">
+          Hamaki
+        </a>
+        <p>Scheduling made easy. A real Mac app that keeps your data on your machine.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/features">Features</a>
+        <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12" target="_blank">Download</a>
+        <a href="https://hamaki-docs.raymond.frl" target="_blank">Docs</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
         <a href="/support">Support</a>
-      </p>
+        <a href="https://mastodon.design/@potloodgum" target="_blank">Mastodon</a>
+        <a href="https://raymond.frl" target="_blank">raymond.frl</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Raymond van Dongelen. Made with love by <a href="https://mastodon.design/@potloodgum" target="_blank" style="color:rgba(255,255,255,0.5)">Potloodgum</a> &amp; <a href="https://raymond.frl" target="_blank" style="color:rgba(255,255,255,0.5)">Dongelen</a>.</span>
+      <span>
+        <a href="https://hamaki-docs.raymond.frl/Privacy-policy.html" target="_blank" style="color:rgba(255,255,255,0.35)">Privacy</a>
+        &nbsp;·&nbsp;
+        <a href="https://hamaki-docs.raymond.frl.pro/Terms-of-use.html" target="_blank" style="color:rgba(255,255,255,0.35)">Terms</a>
+      </span>
     </div>
   </footer>
+  {% endblock %}
 
   <script src="/js/main.js"></script>
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const mobile = document.getElementById('navMobile');
+    if (toggle && mobile) {
+      toggle.addEventListener('click', () => {
+        mobile.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,212 @@
+{% extends "base.njk" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Features</h1>
+  <p>Everything Hamaki does — and why it stays on your Mac.</p>
+</div>
+
+{# ===== CORE ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Core</div>
+      <h2 class="section-title">Booking, your way</h2>
+      <p class="section-sub">The fundamentals that make scheduling actually work.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Visual Spot Drawing</h3>
+        <p>Drag to create time slots directly on your calendar. No forms, no menus — just draw where you're available.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-link"></i></div>
+        <h3>Public Booking Page</h3>
+        <p>Every calendar gets its own booking link. Share it anywhere — email, website, QR code.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-ban"></i></div>
+        <h3>No Conflicts</h3>
+        <p>Booked spots are marked taken instantly. Two visitors can never grab the same slot.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-moon"></i></div>
+        <h3>Auto-Scheduled Breaks</h3>
+        <p>Set buffer time between appointments automatically. Catch your breath between back-to-back meetings. <em>(Pro)</em></p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-list-alt"></i></div>
+        <h3>Waiting Lists</h3>
+        <p>When your calendar is full, visitors can join a waiting list. Manage them directly from the app.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-arrows-alt"></i></div>
+        <h3>Move Appointments</h3>
+        <p>Reschedule any booked slot to a different time directly from the app. Visitors can be notified by email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== PRIVACY ===== #}
+<section class="section-alt">
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Privacy &amp; data</div>
+      <h2 class="section-title">Your data stays yours</h2>
+      <p class="section-sub">Hamaki is built around the principle that your calendar is private.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <h3>Local-First Architecture</h3>
+        <p>All calendar data lives on your Mac. Hamaki doesn't sync your schedule to any remote server.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Calendar.app Integration</h3>
+        <p>Works with your existing macOS Calendar.app. Appointments show up there automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-unlink"></i></div>
+        <h3>Standalone Calendars</h3>
+        <p>Don't want to share Calendar.app access? Create independent booking calendars inside Hamaki — no permissions required.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>Reliable Sync</h3>
+        <p>Hamaki automatically recovers from sync drift after waking your Mac or relaunching the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== POWER USER ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Power user</div>
+      <h2 class="section-title">For the nerds</h2>
+      <p class="section-sub">Automate, integrate, and query your schedule the way you want.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-robot"></i></div>
+        <h3>MCP Server</h3>
+        <p>Run a local MCP server and connect Claude Desktop, OpenCode, or any compatible AI assistant to query your schedule privately.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-terminal"></i></div>
+        <h3>CLI — <code>hamakicli</code></h3>
+        <p>Query appointments from the terminal. Script it, pipe it, automate it. Try <code>hamakicli today</code> or <code>hamakicli visitor "Jan"</code>.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-magic"></i></div>
+        <h3>Shortcuts Support</h3>
+        <p>Trigger Hamaki actions from Apple Shortcuts. Build workflows, create automations, connect with other apps.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-search"></i></div>
+        <h3>Spotlight Integration</h3>
+        <p>Type a visitor name in Spotlight (⌘Space) and jump straight to their profile in Hamaki — or via Siri.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== VISITORS ===== #}
+<section class="section-alt">
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Visitor insights</div>
+      <h2 class="section-title">Know your visitors</h2>
+      <p class="section-sub">More than just a booking tool — understand who you're meeting with.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+        <h3>Visitor Profiles</h3>
+        <p>Each visitor gets a profile with their full appointment history, upcoming bookings, and booking pulse.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-search"></i></div>
+        <h3>Visitor Search</h3>
+        <p>Find any visitor by name from the Search tab. See their history and pulse at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-mouse-pointer"></i></div>
+        <h3>Visitor Jump</h3>
+        <p>Right-click any visitor name anywhere in Hamaki to jump straight to their profile or copy their email.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Stats</h3>
+        <p>See how many people you've met, when your busiest days are, and track patterns over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== NOTES ===== #}
+<section>
+  <div class="section-wrapper">
+    <div class="section-header">
+      <div class="section-label">Note taking</div>
+      <h2 class="section-title">Your notes, your app</h2>
+      <p class="section-sub">Hamaki connects to the note-taking tools you already use.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-sticky-note"></i></div>
+        <h3>Link Your Note App</h3>
+        <p>Connect Obsidian, Bear, NotePlan, Apple Notes, or a custom Shortcut to each calendar. Set it once, forget it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>One-Tap Note Access</h3>
+        <p>Open a visitor's note directly from their profile with one tap. If it doesn't exist yet, Hamaki creates it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Ask Claude to Open Notes</h3>
+        <p>Say "open Jan's note" to Claude and it opens straight away in your connected note app — no clicking required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ===== WIDGET ===== #}
+<section class="section-alt">
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">Today Widget</div>
+      <h2 class="section-title">Your day, at a glance</h2>
+      <p class="section-sub" style="margin:0 auto;">
+        Add the Hamaki widget to macOS Notification Centre and see everything that matters
+        without opening the app: how many appointments are booked, who's coming up next,
+        and which slots are still free. Available in small, medium, and large.
+      </p>
+    </div>
+  </div>
+</section>
+
+{# ===== CTA ===== #}
+<section class="cta-banner">
+  <h2>Ready to try it?</h2>
+  <p>Free to start. No account required.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+       class="btn btn-primary" target="_blank" style="font-size:1.05rem;padding:0.85rem 1.75rem;">
+      <i class="fab fa-apple"></i> Download Free
+    </a>
+  </div>
+</section>
+
+{% endblock %}

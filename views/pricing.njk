@@ -1,0 +1,127 @@
+{% extends "base.njk" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Pricing</h1>
+  <p>Start free. Go Pro when you need more.</p>
+</div>
+
+<section>
+  <div class="section-wrapper">
+    <div class="pricing-grid">
+
+      {# FREE #}
+      <div class="pricing-card">
+        <div class="pricing-plan">Free</div>
+        <div class="pricing-price">€0</div>
+        <div class="pricing-period">forever</div>
+        <ul class="pricing-features">
+          <li>One booking calendar</li>
+          <li>Unlimited spots</li>
+          <li>Public booking page</li>
+          <li>Calendar.app integration</li>
+          <li>Visitor profiles &amp; history</li>
+          <li>Waiting lists</li>
+          <li>Stats page</li>
+          <li>Today Widget</li>
+          <li>Spotlight integration</li>
+          <li>Move appointments</li>
+          <li>Email notifications to visitors</li>
+        </ul>
+        <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+           class="btn btn-outline" target="_blank" style="width:100%;justify-content:center;">
+          <i class="fab fa-apple"></i> Download Free
+        </a>
+      </div>
+
+      {# PRO #}
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most popular</div>
+        <div class="pricing-plan">Hamaki Pro</div>
+        <div class="pricing-price"><sup>€</sup>29<sup style="font-size:1rem;vertical-align:top;margin-top:0.8rem;">.99</sup></div>
+        <div class="pricing-period">one-time purchase — or €2.99/month</div>
+        <ul class="pricing-features">
+          <li>Everything in Free</li>
+          <li>Multiple booking calendars</li>
+          <li>Custom booking page URL</li>
+          <li>Auto-scheduled breaks between appointments</li>
+          <li>Shortcuts &amp; MCP integration</li>
+          <li>CLI — <code>hamakicli</code></li>
+          <li>AI assistant integration (Claude, OpenCode, etc.)</li>
+          <li>Note Taking (Obsidian, Bear, NotePlan, Apple Notes)</li>
+          <li>Visitor Search</li>
+          <li>Visitor Jump</li>
+        </ul>
+        <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+           class="btn btn-purple" target="_blank" style="width:100%;justify-content:center;">
+          <i class="fab fa-apple"></i> Get Hamaki Pro
+        </a>
+      </div>
+
+    </div>
+
+    {# NOTES #}
+    <div style="max-width:580px;margin:2.5rem auto 0;text-align:center;">
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7;">
+        Purchases are charged to your Apple ID at confirmation.
+        Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.
+        Manage or cancel in your App Store account settings.
+      </p>
+    </div>
+  </div>
+</section>
+
+{# ===== FAQ ===== #}
+<section class="section-alt">
+  <div class="section-wrapper narrow">
+    <div class="section-header center">
+      <div class="section-label">Questions</div>
+      <h2 class="section-title">Pricing FAQ</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-question">Is there a trial for Pro?</summary>
+        <div class="faq-answer">
+          The free tier is fully functional — use it as long as you want. When you need multiple calendars or the power-user features, upgrade to Pro directly from within the app or on the Mac App Store.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">One-time vs. monthly — what's the difference?</summary>
+        <div class="faq-answer">
+          Both give you the same Pro features. The one-time purchase (€29.99) pays for Hamaki Pro permanently — as long as you stay on a compatible macOS version, you keep Pro. The monthly subscription (€2.99/month) is an option if you'd prefer smaller payments.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How do I manage my subscription?</summary>
+        <div class="faq-answer">
+          Go to System Settings → Apple ID → Subscriptions on your Mac, or open the App Store, click your profile, and tap "Manage Subscriptions". Apple handles all billing.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Is there a refund policy?</summary>
+        <div class="faq-answer">
+          Refunds are handled by Apple. Visit reportaproblem.apple.com to request a refund for any App Store purchase within Apple's standard refund window.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+{# ===== CTA ===== #}
+<section class="cta-banner">
+  <h2>Start for free today</h2>
+  <p>One booking calendar. Unlimited spots. No credit card.</p>
+  <a href="https://apps.apple.com/nl/app/hamaki/id1627733431?l=en-GB&mt=12"
+     class="btn btn-primary" target="_blank" style="font-size:1.05rem;padding:0.85rem 1.75rem;">
+    <i class="fab fa-apple"></i> Download on Mac App Store
+  </a>
+</section>
+
+{% endblock %}
