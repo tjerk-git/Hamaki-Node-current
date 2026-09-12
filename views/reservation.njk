@@ -47,6 +47,9 @@
             </div>
             <div id="error-message" class="notification is-danger" style="display: none;">
               <p id="error-text"></p>
+              <p id="error-back-link" style="display: none;">
+                <a href="#" onclick="window.history.back(); return false;">&larr; Choose another time</a>
+              </p>
             </div>
             <form id="reservation-form">
               <input type="hidden" name="spotId" value="{{ spotId }}">
@@ -225,16 +228,22 @@
               });
               const errorMessage = document.getElementById('error-message');
               const errorText = document.getElementById('error-text');
-              function showError(message) {
+              const errorBackLink = document.getElementById('error-back-link');
+              function showError(message, options = {}) {
+                const { persist = false, showBackLink = false } = options;
                 errorText.textContent = message;
+                errorBackLink.style.display = showBackLink ? 'block' : 'none';
                 errorMessage.style.display = 'block';
-                setTimeout(() => {
-                  errorMessage.style.display = 'none';
-                }, 5000);
+                if (! persist) {
+                  setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                  }, 5000);
+                }
               }
               form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 errorMessage.style.display = 'none';
+                errorBackLink.style.display = 'none';
                 // Validate name length if provided
                 if (nameInput.value && nameInput.value.length < 2) {
                   showError('Name must be at least 2 characters long');
@@ -324,7 +333,11 @@
                     const errorData = await response.json().catch(() => ({}));
                     resetButton();
                     showError(
-                    errorData.message || 'Failed to create reservation. Please try again.');
+                      errorData.reason
+                      || errorData.message
+                      || 'This spot is no longer available. Please choose another time.',
+                      { persist: true, showBackLink: true }
+                    );
                   }
                 } catch (error) {
                   console.error('Error:', error);
