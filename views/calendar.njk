@@ -33,6 +33,18 @@
       <div class="columns is-centered">
         <div class="column is-10">
           <div>
+            {% if calendar.outOfOfficeStatus and calendar.outOfOfficeStatus != 'available' %}
+              <div id="out-of-office-notice" class="ooo-notice" role="status" style="display: none;">
+                <div class="ooo-icon">
+                  <i class="fas fa-plane"></i>
+                </div>
+                <div class="ooo-body">
+                  <p class="ooo-label" id="out-of-office-label"></p>
+                  <p class="ooo-title" id="out-of-office-title"></p>
+                  <p class="ooo-message" id="out-of-office-message" style="display: none;"></p>
+                </div>
+              </div>
+            {% endif %}
             {% if calendar.description or calendar.location %}
               <div class="box">
                 {% if calendar.description %}
@@ -46,12 +58,6 @@
                     <span>{{ calendar.location }}</span>
                   </p>
                 {% endif %}
-              </div>
-            {% endif %}
-            {% if calendar.outOfOfficeStatus and calendar.outOfOfficeStatus != 'available' %}
-              <div id="out-of-office-notice" class="notification is-warning is-light" style="display: none;">
-                <p><strong id="out-of-office-title"></strong></p>
-                <p id="out-of-office-message" class="mt-2" style="display: none;"></p>
               </div>
             {% endif %}
             <button class="button is-danger mb-5" id="forgot-appointment-btn">
@@ -275,15 +281,18 @@
                     if (notice) {
                       const fmt = 'dddd D MMMM';
                       const title = outOfOffice.status === 'outOfOffice'
-                        ? `Out of office until ${lastDay.format(fmt)}. Back on ${end.format(fmt)}.`
-                        : `Out of office from ${start.format(fmt)} until ${lastDay.format(fmt)}.`;
+                        ? `Away until ${lastDay.format(fmt)}, back on ${end.format(fmt)}.`
+                        : `Away from ${start.format(fmt)} until ${lastDay.format(fmt)}.`;
+                      document.getElementById('out-of-office-label').textContent = outOfOffice.status === 'outOfOffice'
+                        ? 'Currently out of office'
+                        : 'Out of office soon';
                       document.getElementById('out-of-office-title').textContent = title;
                       if (outOfOffice.message) {
                         const messageEl = document.getElementById('out-of-office-message');
                         messageEl.textContent = outOfOffice.message;
                         messageEl.style.display = 'block';
                       }
-                      notice.style.display = 'block';
+                      notice.style.display = 'flex';
                     }
 
                     document.querySelectorAll('.slot.unlocked').forEach(slot => {
