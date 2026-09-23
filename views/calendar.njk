@@ -48,6 +48,12 @@
                 {% endif %}
               </div>
             {% endif %}
+            {% if calendar.outOfOfficeStatus and calendar.outOfOfficeStatus != 'available' %}
+              <div id="out-of-office-notice" class="notification is-warning is-light" style="display: none;">
+                <p><strong id="out-of-office-title"></strong></p>
+                <p id="out-of-office-message" class="mt-2" style="display: none;"></p>
+              </div>
+            {% endif %}
             <button class="button is-danger mb-5" id="forgot-appointment-btn">
               <span class="icon">
                 <i class="fas fa-question-circle"></i>
@@ -63,27 +69,25 @@
               {% endfor %}
             {% endfor %}
             {% if groupedSpots %}
-              {% if not hasAvailableSpots %}
-                <div class="notification">
-                  <p class="mb-3">
-                    <strong>All spots are currently reserved!</strong>
-                  </p>
-                  <div class="buttons">
-                    <button class="button is-primary" id="join-waitlist-btn">
-                      <span class="icon">
-                        <i class="fas fa-list"></i>
-                      </span>
-                      <span>Join the Waiting List</span>
-                    </button>
-                    <a href="/404" class="button is-info">
-                      <span class="icon">
-                        <i class="fas fa-gamepad"></i>
-                      </span>
-                      <span>Or Play the Waiting Game</span>
-                    </a>
-                  </div>
+              <div class="notification" id="all-reserved-notice"{% if hasAvailableSpots %} style="display: none;"{% endif %}>
+                <p class="mb-3">
+                  <strong>All spots are currently reserved!</strong>
+                </p>
+                <div class="buttons">
+                  <button class="button is-primary" id="join-waitlist-btn">
+                    <span class="icon">
+                      <i class="fas fa-list"></i>
+                    </span>
+                    <span>Join the Waiting List</span>
+                  </button>
+                  <a href="/404" class="button is-info">
+                    <span class="icon">
+                      <i class="fas fa-gamepad"></i>
+                    </span>
+                    <span>Or Play the Waiting Game</span>
+                  </a>
                 </div>
-              {% endif %}
+              </div>
               <div id="timezone-notice" class="notification is-info is-light mb-3" style="display: none;">
                 <p id="timezone-notice-text"></p>
                 <button class="button is-small is-info mt-2" id="toggle-timezone-btn"></button>
@@ -248,6 +252,59 @@
                   }
 
                   renderTimes(visitorTimezone);
+
+                  // Out of office: the backend reports the owner's absence but still returns
+                  // (and accepts) spots inside it, so we lock those here. `until` is the last
+                  // day away, inclusive; days are taken in the owner's timezone (UTC fallback),
+                  // matching OutOfOfficePeriod on the server.
+                  const outOfOffice = {
+                    status: {{ calendar.outOfOfficeStatus | default('available') | dump | replace("<", "\\u003c") | safe }},
+                    from: {{ calendar.outOfOfficeFrom | default(null) | dump | replace("<", "\\u003c") | safe }},
+                    until: {{ calendar.outOfOfficeUntil | default(null) | dump | replace("<", "\\u003c") | safe }},
+                    message: {{ calendar.outOfOfficeMessage | default(null) | dump | replace("<", "\\u003c") | safe }}
+                  };
+
+                  function applyOutOfOffice() {
+                    if (outOfOffice.status === 'available' || !outOfOffice.from || !outOfOffice.until) return;
+                    const periodTimezone = (ownerTimezone && moment.tz.zone(ownerTimezone)) ? ownerTimezone : 'UTC';
+                    const start = moment.tz(outOfOffice.from, periodTimezone).startOf('day');
+                    const lastDay = moment.tz(outOfOffice.until, periodTimezone).startOf('day');
+                    const end = lastDay.clone().add(1, 'day');
+
+                    const notice = document.getElementById('out-of-office-notice');
+                    if (notice) {
+                      const fmt = 'dddd D MMMM';
+                      const title = outOfOffice.status === 'outOfOffice'
+                        ? `Out of office until ${lastDay.format(fmt)}. Back on ${end.format(fmt)}.`
+                        : `Out of office from ${start.format(fmt)} until ${lastDay.format(fmt)}.`;
+                      document.getElementById('out-of-office-title').textContent = title;
+                      if (outOfOffice.message) {
+                        const messageEl = document.getElementById('out-of-office-message');
+                        messageEl.textContent = outOfOffice.message;
+                        messageEl.style.display = 'block';
+                      }
+                      notice.style.display = 'block';
+                    }
+
+                    document.querySelectorAll('.slot.unlocked').forEach(slot => {
+                      const spotStart = moment(slot.querySelector('.spot-time').getAttribute('data-time'));
+                      if (spotStart.isSameOrAfter(start) && spotStart.isBefore(end)) {
+                        const locked = document.createElement('div');
+                        locked.className = 'slot locked';
+                        locked.title = 'Out of office';
+                        locked.append(...slot.childNodes);
+                        locked.querySelector('.icon i').className = 'fas fa-plane';
+                        slot.replaceWith(locked);
+                      }
+                    });
+
+                    const allReserved = document.getElementById('all-reserved-notice');
+                    if (allReserved && document.querySelectorAll('.slot.unlocked').length === 0) {
+                      allReserved.style.display = 'block';
+                    }
+                  }
+
+                  applyOutOfOffice();
 
                   if (ownerTimezone && ownerTimezone !== visitorTimezone) {
                     document.getElementById('timezone-notice').style.display = 'block';
